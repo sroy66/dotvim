@@ -1,0 +1,45 @@
+[submodule "gundo.vim"]
+	path = gundo.vim
+	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = http://github.com/tpope/vim-fugitive.git
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/minibufexpl"]
+	path = bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = https://github.com/jwhitley/vim-colors-solarized.git
+[submodule "bundle/vim-colorschemes"]
+	path = bundle/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "bundle/vim-colors"]
+	path = bundle/vim-colors
+	url = https://github.com/mgutz/vim-colors.git
+[submodule "bundle/vim-arduino"]
+	path = bundle/vim-arduino
+	url = https://github.com/kingbin/vim-arduino.git
+[submodule "bundle/tlib_vim"]
+	path = bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "bundle/vim-addon-mw-utils"]
+	path = bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/vim-snipmate"]
+	path = bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
