@@ -70,7 +70,7 @@ endif
 
 set t_Co=256
 set term=xterm-256color
-"let g:solarized_termcolors=256
+let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 set background=dark
@@ -82,10 +82,10 @@ au BufRead * match OverLength /\%121v.\+/
 
 " set a bar for the column width
 if exists('+colorcolumn')
-  set colorcolumn=81,121
+  set colorcolumn=121
   hi ColorColumn ctermbg=7
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>121v.\+', -1)
 endif
 
 " statusbar
@@ -99,7 +99,7 @@ set statusline+=%-14.(%l,%c%V%)\ %<%P  " offset
 " commands for various useful tasks
 au BufWritePre * :%s/\s\+$//e  " strip trailing whitespace on save
 
-" TagList configuration
+" Taglist setup
 let Tlist_Show_One_File = 1
 let Tlist_WinWidth = 40
 let Tlist_Use_Right_Window = 1
@@ -108,11 +108,8 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_SingleClick = 1
 let Tlist_Inc_Winwidth = 0
 
-" NERDtree setup - don't enable yet, something doesn't like this
-"au VimEnter * NERDTree         " auto open NERDtree with vim
-"au BufEnter * NERDTreeMirror
-"au VimEnter * wincmd w
-"let g:nerdtree_tabs_open_on_console_startup=1
+" NERDtree configuration
+au BufEnter * NERDTreeMirror
 
 " Syntastic configuration
 let g:syntastic_enable_highlighting = 1
@@ -125,20 +122,25 @@ let g:syntastic_enable_balloons = 1
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['vala', 'c'],
                            \ 'passive_filetypes': ['bash'] }
-
 " for solarized dark - http://ethanschoonover.com/solarized
-" core01 = #586e75
-" core1  = #93a1a1
+"  - core01 = #586e75
+"  - core1  = #93a1a1
 hi SyntasticError guifg=#586e75 guibg=#93a1a1
 hi SyntasticWarning guifg=#586e75 guibg=#93a1a1
 hi SyntasticErrorSign guifg=#586e75 guibg=#93a1a1
 hi SyntasticWarningSign guifg=#586e75 guibg=#93a1a1
 
-" SnipMate configuration
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
-let g:snipMate.scope_aliases['vala'] = 'vala,vapi'
+" Ctrl-P configuration
+:let g:ctrlp_map = '<Leader>t'
+:let g:ctrlp_match_window_bottom = 0
+:let g:ctrlp_match_window_reversed = 0
+:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+:let g:ctrlp_working_path_mode = 0
+:let g:ctrlp_dotfiles = 0
+:let g:ctrlp_switch_buffer = 0
+
+" closetag configuration
+:let g:closetag_html_style=1
 
 " configure indentation guide colors
 let g:indent_guides_auto_colors = 0
@@ -173,12 +175,15 @@ au FileType c so ~/.vim/syntax/gtk-highlight.vim
 " vala source files
 au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
 au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead,BufNewFile *.vala            setfiletype vala
-au BufRead,BufNewFile *.vapi            setfiletype vala
+au BufRead,BufNewFile *.vala setfiletype vala
+au BufRead,BufNewFile *.vapi setfiletype vala
 let vala_comment_strings = 1        " enable comment strings
 let vala_space_errors = 1           " highlight space errors
 let vala_no_tab_space_error = 1     " disable space-tab-space errors
 let tlist_vala_settings='c#;d:macro;t:typedef;n:namespace;c:class;E:event;g:enum;s:struct;i:interface;p:properties;m:method'
+
+au BufRead,BufNewFile *.xml setfiletype xml
+au FileType xml call AlternativeTabbing()
 
 " valgrind suppression files
 "au BufNewFile,BufRead *.supp set filetype=supp
@@ -204,14 +209,6 @@ au FileType c set omnifunc=ccomplete#Complete
 
 """
 " functions to extend awesomeness of vim
-
-function! CommentLines()
-  :'<,'>s/^\(.\)/\/\/\1/
-endfunction
-
-function! UncommentLines()
-  :'<,'>s/^\/\///
-endfunction
 
 function! RmTrailingWsp()
   :%s/\s\+$//
@@ -291,14 +288,9 @@ endfunction
 """
 " key mappings, older versions of vim might need
 "   C-v + C-m instead of <CR>
-
 map ,v :sp ~/.vimrc<CR>
 map <silent> ,V :source ~/.vimrc<CR>:exe ":echo 'vimrc reloaded'"<CR>
-"""
-" C-s doesn't work in terminal mode
-" map <silent> <C-S> :w<CR>
-map <F2> :call CommentLines()<CR>
-map <F3> :call UncommentLines()<CR>
+
 map <F4> :TlistToggle<CR>
 map <F5> :NERDTreeTabsToggle<CR>
 " map <F6> :call MpdPause()<CR>
@@ -314,6 +306,7 @@ imap ,d <C-R>=strftime('%Y-%m-%d')<CR>
 imap ,h <ESC>:0<CR>i<CR><ESC> :execute "r ~/.blob/c.hdr"<CR>a
 """
 " C-s doesn't work in terminal mode
+" map <silent> <C-S> :w<CR>
 " imap <C-s> <C-o><C-s><CR>
 "imap <C-v> <Esc><C-v>a
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
@@ -326,3 +319,15 @@ nmap <C-p> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 " some regular expressions to consider adding
 " :%s/^\w*/\"\0\"/ => wrap first word in "
 " :%s/\w*$/\"\0\"/ => wrap last word in "
+
+"""
+" Ideas taken from some genius at static.github.io/vim.html
+:nmap \e :NERDTreeToggle<CR>
+:nmap \l :setlocal number!<CR>
+:nmap \o :set paste!<CR>
+:nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+:nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+:nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+:nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+:nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+:nmap ; :CtrlPBuffer<CR>
