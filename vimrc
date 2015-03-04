@@ -131,16 +131,17 @@ hi SyntasticErrorSign guifg=#586e75 guibg=#93a1a1
 hi SyntasticWarningSign guifg=#586e75 guibg=#93a1a1
 
 " Ctrl-P configuration
-:let g:ctrlp_map = '<Leader>t'
-:let g:ctrlp_match_window_bottom = 0
-:let g:ctrlp_match_window_reversed = 0
-:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-:let g:ctrlp_working_path_mode = 0
-:let g:ctrlp_dotfiles = 0
-:let g:ctrlp_switch_buffer = 0
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " closetag configuration
-:let g:closetag_html_style=1
+let g:closetag_html_style=1
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 
 " configure indentation guide colors
 let g:indent_guides_auto_colors = 0
@@ -184,6 +185,10 @@ let tlist_vala_settings='c#;d:macro;t:typedef;n:namespace;c:class;E:event;g:enum
 
 au BufRead,BufNewFile *.xml setfiletype xml
 au FileType xml call AlternativeTabbing()
+
+au BufRead,BufNewFile *.rb setfiletype ruby
+au BufRead,BufNewFile *.erb setfiletype ruby
+au FileType ruby call AlternativeTabbing()
 
 " valgrind suppression files
 "au BufNewFile,BufRead *.supp set filetype=supp
