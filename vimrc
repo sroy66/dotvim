@@ -108,6 +108,10 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_SingleClick = 1
 let Tlist_Inc_Winwidth = 0
 
+let tlist_vala_settings='c#;d:macro;t:typedef;n:namespace;c:class;'.
+  \ 'E:event;g:enum;s:struct;i:interface;'.
+  \ 'p:properties;m:method'
+
 " NERDtree configuration
 au BufEnter * NERDTreeMirror
 
@@ -211,6 +215,9 @@ au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
 au FileType php set omnifunc=phpcomplete#CompletePHP
 au FileType c set omnifunc=ccomplete#Complete
+
+" gitcommit specific
+"autocmd Filetype gitcommit spell textwidth=72
 
 """
 " functions to extend awesomeness of vim
