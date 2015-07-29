@@ -58,3 +58,15 @@
 [submodule "bundle/vim-bundler"]
 	path = bundle/vim-bundler
 	url = https://github.com/tpope/vim-bundler.git
+[submodule "bundle/gtk-vim-syntax"]
+	path = bundle/gtk-vim-syntax
+	url = https://github.com/vim-scripts/gtk-vim-syntax.git
+[submodule "bundle/goyo"]
+	path = bundle/goyo
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "bundle/mediawiki"]
+	path = bundle/mediawiki
+	url = https://github.com/chikamichi/mediawiki.vim.git
+[submodule "bundle/mediawiki-editor"]
+	path = bundle/mediawiki-editor
+	url = https://github.com/vim-scripts/vim-mediawiki-editor.git
