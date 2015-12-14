@@ -38,6 +38,7 @@ set cursorline
 set nostartofline       " don't jump to first char while paging
 set equalalways         " force splits to be 50/50
 set backspace=indent,eol,start
+set modeline
 
 " text formatting
 set nowrap
@@ -152,6 +153,9 @@ let g:indent_guides_auto_colors = 0
 au VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 au VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
+" To line wrap select lines and do `gq'
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
 " settings needed for latex-suite
 "let g:tex_flavor='latex'
 "set grepprg=grep\ -nH\ $*
@@ -254,6 +258,14 @@ function! DefaultTabbing()
   set tabstop=4
   set shiftwidth=4
   set softtabstop=4
+endfunction
+
+function! BashTabbing()
+  echo "Enabling bash style tabbing"
+  set tabstop=2
+  set shiftwidth=2
+  set softtabstop=2
+  set noexpandtab
 endfunction
 
 function! DiffGetLocal()
