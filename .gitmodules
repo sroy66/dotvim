@@ -82,3 +82,6 @@
 [submodule "bundle/ejs-syntax"]
 	path = bundle/ejs-syntax
 	url = https://github.com/nikvdp/ejs-syntax.git
+[submodule "bundle/vim-jade"]
+	path = bundle/vim-jade
+	url = git://github.com/digitaltoad/vim-jade.git

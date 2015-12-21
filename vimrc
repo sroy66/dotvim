@@ -198,6 +198,10 @@ au BufRead,BufNewFile *.rb setfiletype ruby
 au BufRead,BufNewFile *.erb setfiletype ruby
 au FileType ruby call AlternativeTabbing()
 
+au BufRead,BufNewFile *.js setfiletype javascript
+au BufRead,BufNewFile *.ejs setfiletype javascript
+au FileType javascript call AlternativeTabbing()
+
 " valgrind suppression files
 "au BufNewFile,BufRead *.supp set filetype=supp
 
