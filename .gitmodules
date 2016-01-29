@@ -88,3 +88,6 @@
 [submodule "bundle/puppet"]
 	path = bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git
+[submodule "bundle/jshint"]
+	path = bundle/jshint
+	url = https://github.com/wookiehangover/jshint.vim.git
