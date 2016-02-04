@@ -71,7 +71,7 @@ endif
 
 set t_Co=256
 set term=xterm-256color
-let g:solarized_termcolors = 256
+"let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 set background=dark
@@ -136,7 +136,7 @@ hi SyntasticErrorSign guifg=#586e75 guibg=#93a1a1
 hi SyntasticWarningSign guifg=#586e75 guibg=#93a1a1
 
 " Ctrl-P configuration
-let g:ctrlp_map = '<Leader>t'
+"let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
@@ -337,8 +337,8 @@ imap ,h <ESC>:0<CR>i<CR><ESC> :execute "r ~/.blob/c.hdr"<CR>a
 " map <silent> <C-S> :w<CR>
 " imap <C-s> <C-o><C-s><CR>
 "imap <C-v> <Esc><C-v>a
-vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
-nmap <C-p> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+vmap <C-S-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+nmap <C-S-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 
 "map <C-[> :resize +5<CR>
 "map <C-]> :resize -5<CR>
