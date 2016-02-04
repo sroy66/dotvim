@@ -136,7 +136,6 @@ hi SyntasticErrorSign guifg=#586e75 guibg=#93a1a1
 hi SyntasticWarningSign guifg=#586e75 guibg=#93a1a1
 
 " Ctrl-P configuration
-"let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
