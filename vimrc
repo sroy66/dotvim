@@ -127,6 +127,7 @@ let g:syntastic_enable_balloons = 1
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['vala', 'c'],
                            \ 'passive_filetypes': ['bash'] }
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 " for solarized dark - http://ethanschoonover.com/solarized
 "  - core01 = #586e75
 "  - core1  = #93a1a1
@@ -143,9 +144,19 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
+" Jedi settings
+au FileType python setlocal completeopt-=preview
+
 " closetag configuration
 let g:closetag_html_style=1
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
+
+" previm configuration
+let g:previm_open_cmd = 'google-chrome'
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mark*} set filetype=markdown
+augroup end
 
 " configure indentation guide colors
 let g:indent_guides_auto_colors = 0
@@ -337,7 +348,7 @@ imap ,h <ESC>:0<CR>i<CR><ESC> :execute "r ~/.blob/c.hdr"<CR>a
 " imap <C-s> <C-o><C-s><CR>
 "imap <C-v> <Esc><C-v>a
 vmap <C-S-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
-nmap <C-S-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+"nmap <C-S-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 
 "map <C-[> :resize +5<CR>
 "map <C-]> :resize -5<CR>
