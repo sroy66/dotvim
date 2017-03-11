@@ -88,9 +88,6 @@
 [submodule "bundle/jshint"]
 	path = bundle/jshint
 	url = https://github.com/wookiehangover/jshint.vim.git
-[submodule "bundle/vim-markdown"]
-	path = bundle/vim-markdown
-	url = https://github.com/tpope/vim-markdown.git
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
@@ -103,3 +100,12 @@
 [submodule "bundle/vim-liquid"]
 	path = bundle/vim-liquid
 	url = https://github.com/tpope/vim-liquid.git
+[submodule "bundle/scvim"]
+	path = bundle/scvim
+	url = git://github.com/sbl/scvim.git
+[submodule "bundle/vim-markdown-preview"]
+	path = bundle/vim-markdown-preview
+	url = https://github.com/JamshedVesuna/vim-markdown-preview.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git

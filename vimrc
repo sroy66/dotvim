@@ -128,6 +128,9 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['vala', 'c'],
                            \ 'passive_filetypes': ['bash'] }
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+"let g:syntastic_vala_modules = 'dcs-build dcs-core-0.2 dcs-ui-0.2 dcs-cli-0.2 dcs-daq-0.2 dcs-net-0.2 dcs-control-0.2'
+let g:syntastic_vala_modules = 'dcs-build dcs-core-0.2'
+let g:syntastic_vala_vapi_dirs = '~/Dropbox/Projects/opendcs/dcs/src/libdcs-core/'
 " for solarized dark - http://ethanschoonover.com/solarized
 "  - core01 = #586e75
 "  - core1  = #93a1a1
@@ -158,10 +161,20 @@ augroup PrevimSettings
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mark*} set filetype=markdown
 augroup end
 
+" Markdown Preview - previm does a better job
+"let vim_markdown_preview_toggle=2
+"let vim_markdown_preview_hotkey='<C-l>'
+"let vim_markdown_preview_browser='Google Chrome'
+"let vim_markdown_preview_github=1
+"let vim_markdown_preview_use_xdg_open=1
+
 " configure indentation guide colors
 let g:indent_guides_auto_colors = 0
 au VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 au VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+" SuperCollider
+let g:sclangTerm = "terminator $SHELL -ic"
 
 " To line wrap select lines and do `gq'
 au BufRead,BufNewFile *.md setlocal textwidth=80
@@ -174,14 +187,18 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 "set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
 " latex specific settings, eg. spell checking
-"au BufRead,BufNewFile *.tex setfiletype latex
-"au BufRead,BufNewFile *.bib setfiletype latex
-"au FileType tex call AlternativeTabbing()
-"au FileType tex set spell
+au BufRead,BufNewFile *.{tex,bib} setfiletype=latex
+au FileType tex call AlternativeTabbing()
+au FileType tex set spell
+
+" markdown files
+au BufRead,BufNewFile *.{md,mdwn,mdk,mark*} setfiletype=markdown
+au FileType markdown call AlternativeTabbing()
+au FileType markdown set spell
 
 " text files
-"au BufRead,BufNewFile *.txt setfiletype text
-"au FileType text set spell
+au BufRead,BufNewFile *.txt setfiletype=text
+au FileType text set spell
 
 " dotfiles
 "au BufRead,BufNewFile .* setfiletype dotfiles
@@ -334,10 +351,10 @@ map <F5> :NERDTreeTabsToggle<CR>
 " map <F6> :call MpdPause()<CR>
 " map <F7> :call MpdPlay()<CR>
 map <F7> :call DiffGetLocal()<CR>
-map <F8> :call SaveCurrent()<CR>
-map <F9> :call QuitAll()<CR>
-" map <F8> :make<CR>
-" map <F9> :call EnableFolding()<CR>
+" map <F8> :call SaveCurrent()<CR>
+" map <F9> :call QuitAll()<CR>
+map <F8> :make<CR>
+map <F9> :call EnableFolding()<CR>
 map <F10> :call DisableFolding()<CR>
 imap ,a Geoff Johnson, <geoff.jay@gmail.com><CR>
 imap ,d <C-R>=strftime('%Y-%m-%d')<CR>
