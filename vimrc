@@ -1,344 +1,46 @@
-" clear existing commands
+" Clear existing commands
 autocmd!
 
+" Load plugins
 call pathogen#infect()
 call pathogen#helptags()
 
-" set to auto read when a file is changed from outside of the buffer
-set autoread
+" Editor configuration
+call conf#editor#defaults()
+call conf#editor#colorscheme()
+call conf#editor#columnwidth()
+call conf#editor#indentation()
 
-" highlighting for various file types
-syntax on
+" Strip trailing whitespace on save
+au BufWritePre * :%s/\s\+$//e
 
-" enable filetype plugin
-filetype on
-filetype plugin on
-filetype indent on
+" Plugin configuration
+call conf#statusbar#init()
+call conf#syntastic#init()
+call conf#autocomplete#init()
+call conf#taglist#init()
+call conf#ctrlp#init()
+call conf#closetag#init()
+call conf#nerdtree#init()
+call conf#jedi#init()
+call conf#supercollider#init()
+call conf#previm#init()
 
-set history=250
-" tab completion for filenames, help topics, option names
-set wildmode=list:longest,full
-" for displaying lists with bullets (i think)
-execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
-
-" set the map leader for key combinations
-let mapleader=","
-let g:mapleader=","
-
-" editor options
-set showmode
-set showcmd
-set nocompatible        " prevents vi like bugs and behaviour
-set mouse=a
-set nomodeline
-set showmatch
-set ruler
-set number
-set cursorline
-set nostartofline       " don't jump to first char while paging
-set equalalways         " force splits to be 50/50
-set backspace=indent,eol,start
-set modeline
-
-" text formatting
-set nowrap
-set tabstop=4
-set expandtab
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set shiftround
-set autoindent
-set smartindent
-
-" search & replace
-set ignorecase
-set smartcase
-set incsearch
-set gdefault
-
-" persistent undo if version is 7.3 or later
-if v:version >= 7.3
-  set undodir=~/.vim/undodir
-  set undofile
-  set undolevels=1000   " maximum number of changes that can be undone
-  set undoreload=10000  " maximum number lines to save for undo on a buffer reload
-endif
-
-" split rules - changes MiniBufExplorer
-"set splitright
-"set splitbelow
-
-set t_Co=256
-set term=xterm-256color
-"let g:solarized_termcolors = 256
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-set background=dark
-colorscheme solarized
-
-" highlight lines that go too long
-au BufRead * hi OverLength ctermbg=blue ctermfg=white guibg=#592929
-au BufRead * match OverLength /\%121v.\+/
-
-" set a bar for the column width
-if exists('+colorcolumn')
-  set colorcolumn=121
-  hi ColorColumn ctermbg=7
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>121v.\+', -1)
-endif
-
-" statusbar
-set laststatus=2
-set statusline=
-set statusline+=%f\                    " file name
-set statusline+=%h%1*%m%r%w%0*         " flags
-set statusline+=%=                     " right align
-set statusline+=%-14.(%l,%c%V%)\ %<%P  " offset
-
-" commands for various useful tasks
-au BufWritePre * :%s/\s\+$//e  " strip trailing whitespace on save
-
-" Taglist setup
-let Tlist_Show_One_File = 1
-let Tlist_WinWidth = 40
-let Tlist_Use_Right_Window = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Use_SingleClick = 1
-let Tlist_Inc_Winwidth = 0
-
-let tlist_vala_settings='c#;d:macro;t:typedef;n:namespace;c:class;'.
-  \ 'E:event;g:enum;s:struct;i:interface;'.
-  \ 'p:properties;m:method'
-
-" NERDtree configuration
-au BufEnter * NERDTreeMirror
-
-" Syntastic configuration
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_error_symbol = 'e>'
-let g:syntastic_warning_symbol = 'w>'
-let g:syntastic_style_error_symbol = 's>'
-let g:syntastic_style_warning_symbol = 's>'
-let g:syntastic_enable_balloons = 1
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['vala', 'c'],
-                           \ 'passive_filetypes': ['bash'] }
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-"let g:syntastic_vala_modules = 'dcs-build dcs-core-0.2 dcs-ui-0.2 dcs-cli-0.2 dcs-daq-0.2 dcs-net-0.2 dcs-control-0.2'
-let g:syntastic_vala_modules = 'dcs-build dcs-core-0.2'
-let g:syntastic_vala_vapi_dirs = '~/Dropbox/Projects/opendcs/dcs/src/libdcs-core/'
-" for solarized dark - http://ethanschoonover.com/solarized
-"  - core01 = #586e75
-"  - core1  = #93a1a1
-hi SyntasticError guifg=#586e75 guibg=#93a1a1
-hi SyntasticWarning guifg=#586e75 guibg=#93a1a1
-hi SyntasticErrorSign guifg=#586e75 guibg=#93a1a1
-hi SyntasticWarningSign guifg=#586e75 guibg=#93a1a1
-
-" Ctrl-P configuration
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
-
-" Jedi settings
-au FileType python setlocal completeopt-=preview
-
-" closetag configuration
-let g:closetag_html_style=1
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
-
-" previm configuration
-let g:previm_open_cmd = 'google-chrome'
-augroup PrevimSettings
-  autocmd!
-  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mark*} set filetype=markdown
-augroup end
-
-" Markdown Preview - previm does a better job
-"let vim_markdown_preview_toggle=2
-"let vim_markdown_preview_hotkey='<C-l>'
-"let vim_markdown_preview_browser='Google Chrome'
-"let vim_markdown_preview_github=1
-"let vim_markdown_preview_use_xdg_open=1
-
-" configure indentation guide colors
-let g:indent_guides_auto_colors = 0
-au VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-au VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-
-" SuperCollider
-let g:sclangTerm = "terminator $SHELL -ic"
-
-" To line wrap select lines and do `gq'
-au BufRead,BufNewFile *.md setlocal textwidth=80
-
-" settings needed for latex-suite
-"let g:tex_flavor='latex'
-"set grepprg=grep\ -nH\ $*
-"let g:Tex_Folding=0
-"set iskeyword+=:
-"set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-
-" latex specific settings, eg. spell checking
-au BufRead,BufNewFile *.{tex,bib} setfiletype=latex
-au FileType tex call AlternativeTabbing()
-au FileType tex set spell
-
-" markdown files
-au BufRead,BufNewFile *.{md,mdwn,mdk,mark*} setfiletype=markdown
-au FileType markdown call AlternativeTabbing()
-au FileType markdown set spell
-
-" text files
-au BufRead,BufNewFile *.txt setfiletype=text
-au FileType text set spell
-
-" dotfiles
-"au BufRead,BufNewFile .* setfiletype dotfiles
-"au FileType dotfiles call AlternativeTabbing()
-
-" c source files
-au BufRead,BufNewFile *.c setfiletype c
-au FileType c so ~/.vim/syntax/gtk-highlight.vim
-
-" vala source files
-au BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead,BufNewFile *.vala setfiletype vala
-au BufRead,BufNewFile *.vapi setfiletype vala
-let vala_comment_strings = 1        " enable comment strings
-let vala_space_errors = 1           " highlight space errors
-let vala_no_tab_space_error = 1     " disable space-tab-space errors
-let tlist_vala_settings='c#;d:macro;t:typedef;n:namespace;c:class;E:event;g:enum;s:struct;i:interface;p:properties;m:method'
-
-au BufRead,BufNewFile *.xml setfiletype xml
-au FileType xml call AlternativeTabbing()
-
-au BufRead,BufNewFile *.rb setfiletype ruby
-au BufRead,BufNewFile *.erb setfiletype ruby
-au FileType ruby call AlternativeTabbing()
-
-au BufRead,BufNewFile *.js setfiletype javascript
-au BufRead,BufNewFile *.ejs setfiletype javascript
-au FileType javascript call AlternativeTabbing()
-
-" valgrind suppression files
-"au BufNewFile,BufRead *.supp set filetype=supp
-
-" python source files
-"au BufRead *.py set filetype=python
-"au FileType python call AlternativeTabbing()
-"" automatically strip trailing whitespace from python files
-""au BufWrite *.py :call RmTrailingWsp()
-
-" set the filetypes for some other types
-"au BufRead,BufNewFile *.vbs setfiletype vbnet
-"au BufRead,BufNewFile *.asp setfiletype aspvbs
-
-" enable auto completion - complete things with Ctrl+X O
-au FileType python set omnifunc=pythoncomplete#Complete
-au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-au FileType html set omnifunc=htmlcomplete#CompleteTags
-au FileType css set omnifunc=csscomplete#CompleteCSS
-au FileType xml set omnifunc=xmlcomplete#CompleteTags
-au FileType php set omnifunc=phpcomplete#CompletePHP
-au FileType c set omnifunc=ccomplete#Complete
+" Filetype configuration
+call conf#filetypes#latex()
+call conf#filetypes#markdown()
+call conf#filetypes#text()
+"call conf#filetypes#dotfiles()
+call conf#filetypes#c()
+call conf#filetypes#vala()
+call conf#filetypes#xml()
+call conf#filetypes#ruby()
+call conf#filetypes#javascript()
+call conf#filetypes#supp()
+"call conf#filetypes#python()
 
 " gitcommit specific
 "autocmd Filetype gitcommit spell textwidth=72
-
-"""
-" functions to extend awesomeness of vim
-
-function! RmTrailingWsp()
-  :%s/\s\+$//
-endfunction
-
-function! DisableFolding()
-  echo "Code folding disabled"
-  set nofoldenable
-  set foldcolumn=0
-endfunction
-
-function! EnableFolding()
-  echo "Code folding enabled"
-  set foldenable
-  set foldcolumn=2
-  set foldmethod=indent
-  set foldminlines=2
-  set foldlevel=4
-  set foldopen=
-endfunction
-
-function! AlternativeTabbing()
-  echo "Enabling alternative tabbing settings"
-  set tabstop=2
-  set shiftwidth=2
-  set softtabstop=2
-endfunction
-
-function! DefaultTabbing()
-  echo "Enabling default tabbing settings"
-  set tabstop=4
-  set shiftwidth=4
-  set softtabstop=4
-endfunction
-
-function! BashTabbing()
-  echo "Enabling bash style tabbing"
-  set tabstop=2
-  set shiftwidth=2
-  set softtabstop=2
-  set noexpandtab
-endfunction
-
-function! DiffGetLocal()
-  :diffg LO
-endfunction
-
-function! SaveCurrent()
-  :w
-endfunction
-
-function! QuitAll()
-  :qall
-endfunction
-
-" another way of generating incremented numbers
-"=============================================================================
-" File: increment.vim
-" Author: Stanislav Sitar
-" Put increment.vim into a plugin directory.
-" Use in replacement strings
-" :let I=0
-" :%s/my_token_word_to_be_replaced_by_the_auto_incremented_numbers/\=INC(1)/
-" or
-" :let I=95
-" :%s/@/\=INC(5)/
-" to replace each occurrence of character @ with numbers starting with 100 and
-" growing by 5 (100, 105, 110, ...)
-let g:I=0
-function! AddIncrement(increment)
-  let g:I= g:I + a:increment
-  return g:I
-endfunction
-
-function! MpdPause()
-  echo "MPD server - Pause"
-  :call system("mpc pause")
-endfunction
-
-function! MpdPlay()
-  echo "MPD server - Play"
-  :call system("mpc play")
-endfunction
 
 """
 " key mappings, older versions of vim might need
@@ -348,17 +50,14 @@ map <silent> ,V :source ~/.vimrc<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 map <F4> :TlistToggle<CR>
 map <F5> :NERDTreeTabsToggle<CR>
-" map <F6> :call MpdPause()<CR>
-" map <F7> :call MpdPlay()<CR>
-map <F7> :call DiffGetLocal()<CR>
-" map <F8> :call SaveCurrent()<CR>
-" map <F9> :call QuitAll()<CR>
+" map <F6> :call conf#util#MpdPause()<CR>
+" map <F7> :call conf#util#MpdPlay()<CR>
+map <F7> :call conf#util#DiffGetLocal()<CR>
+" map <F8> :call conf#util#SaveCurrent()<CR>
+" map <F9> :call conf#util#QuitAll()<CR>
 map <F8> :make<CR>
-map <F9> :call EnableFolding()<CR>
-map <F10> :call DisableFolding()<CR>
-imap ,a Geoff Johnson, <geoff.jay@gmail.com><CR>
-imap ,d <C-R>=strftime('%Y-%m-%d')<CR>
-imap ,h <ESC>:0<CR>i<CR><ESC> :execute "r ~/.blob/c.hdr"<CR>a
+map <F9> :call conf#util#EnableFolding()<CR>
+map <F10> :call conf#util#DisableFolding()<CR>
 """
 " C-s doesn't work in terminal mode
 " map <silent> <C-S> :w<CR>
@@ -376,8 +75,15 @@ vmap <C-S-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:ca
 " :%s/\w*$/\"\0\"/ => wrap last word in "
 
 """
-" Ideas taken from some genius at static.github.io/vim.html
+" Beautify JavaScript
+nnoremap <leader>ff :%!js-beautify -j -q -B -f -<CR>
+
+"""
+" Ideas adapted from some genius at static.github.io/vim.html
+:nmap \a Geoff Johnson, <geoff.jay@gmail.com><CR>
+:nmap \d <C-R>=strftime('%Y-%m-%d')<CR>
 :nmap \e :NERDTreeToggle<CR>
+:nmap \f :YcmCompleter FixIt<CR>
 :nmap \l :setlocal number!<CR>
 :nmap \o :set paste!<CR>
 :nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
