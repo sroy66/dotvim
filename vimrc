@@ -81,6 +81,7 @@ nnoremap <leader>ff :%!js-beautify -j -q -B -f -<CR>
 """
 " Ideas adapted from some genius at static.github.io/vim.html
 :nmap \a Geoff Johnson, <geoff.jay@gmail.com><CR>
+:nmap \c :CoVim start 14041 gjohn<CR>
 :nmap \d <C-R>=strftime('%Y-%m-%d')<CR>
 :nmap \e :NERDTreeToggle<CR>
 :nmap \f :YcmCompleter FixIt<CR>

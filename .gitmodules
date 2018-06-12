@@ -148,3 +148,12 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "bundle/vim-go"]
+	path = bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "bundle/CoVim"]
+	path = bundle/CoVim
+	url = git://github.com/FredKSchott/CoVim.git
+[submodule "bundle/vim-dcs-snippets"]
+	path = bundle/vim-dcs-snippets
+	url = git@github.com:geoffjay/vim-dcs-snippets.git
