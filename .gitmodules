@@ -161,3 +161,9 @@
 [submodule "bundle/vim-dcs-snippets"]
 	path = bundle/vim-dcs-snippets
 	url = git@github.com:geoffjay/vim-dcs-snippets.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
