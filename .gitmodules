@@ -115,12 +115,14 @@
 [submodule "bundle/vim-wakatime"]
 	path = bundle/vim-wakatime
 	url = git://github.com/wakatime/vim-wakatime.git
+    ignore = dirty
 [submodule "bundle/vim-qml"]
 	path = bundle/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
 [submodule "bundle/vim-raml"]
 	path = bundle/vim-raml
 	url = https://github.com/IN3D/vim-raml.git
+    ignore = dirty
 [submodule "bundle/vim-editorconfig"]
 	path = bundle/vim-editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
@@ -145,6 +147,7 @@
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+    ignore = dirty
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
@@ -154,6 +157,7 @@
 [submodule "bundle/CoVim"]
 	path = bundle/CoVim
 	url = git://github.com/FredKSchott/CoVim.git
+    ignore = dirty
 [submodule "bundle/vim-dcs-snippets"]
 	path = bundle/vim-dcs-snippets
 	url = git@github.com:geoffjay/vim-dcs-snippets.git

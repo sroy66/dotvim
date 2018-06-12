@@ -65,11 +65,7 @@ endfunction
 function conf#editor#colorscheme()
   set t_Co=256
   set term=xterm-256color
-  ""let g:solarized_termcolors = 256
-  "let g:solarized_visibility = "high"
-  "let g:solarized_contrast = "high"
   set background=dark
-  "colorscheme solarized
   colorscheme gruvbox
 endfunction
 
