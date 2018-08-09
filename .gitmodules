@@ -170,3 +170,9 @@
 [submodule "bundle/rust.vim"]
 	path = bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule "bundle/vim-grip"]
+	path = bundle/vim-grip
+	url = https://github.com/PratikBhusal/vim-grip.git
+[submodule "bundle/LanguageClient-neovim"]
+	path = bundle/LanguageClient-neovim
+	url = https://github.com/autozimu/LanguageClient-neovim.git

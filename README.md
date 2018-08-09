@@ -15,6 +15,14 @@ cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --go-completer --rust-completer --js-completer
 ```
 
+### Grip
+
+In order for `:GripStart` to work grip needs to be installed.
+
+```sh
+python3 -m pip install --user grip
+```
+
 ## Update
 
 ```sh

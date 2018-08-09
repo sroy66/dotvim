@@ -23,6 +23,7 @@ call conf#ctrlp#init()
 call conf#closetag#init()
 call conf#nerdtree#init()
 call conf#jedi#init()
+call conf#lsp#init()
 call conf#supercollider#init()
 call conf#previm#init()
 
