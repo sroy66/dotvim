@@ -26,6 +26,7 @@ call conf#jedi#init()
 call conf#lsp#init()
 call conf#supercollider#init()
 call conf#previm#init()
+call conf#taskwarrior#init()
 
 " Filetype configuration
 call conf#filetypes#latex()

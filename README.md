@@ -3,6 +3,10 @@
 ## Setup
 
 ```sh
+# install cmake gcc-c++ python3-dev(el) ctags/etags
+```
+
+```sh
 git clone http://github.com/geoffjay/dotvim.git ~/.vim
 cd ~/.vim
 git submodule update --init --recursive
