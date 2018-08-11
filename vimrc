@@ -27,6 +27,7 @@ call conf#lsp#init()
 call conf#supercollider#init()
 call conf#previm#init()
 call conf#taskwarrior#init()
+call conf#powerline#init()
 
 " Filetype configuration
 call conf#filetypes#latex()
