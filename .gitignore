@@ -1,4 +1,8 @@
-*.swp
+*~
+*.sw[op]
+
+.netrwhist
+autoload/conf/redmine.vim
 
 bundle/
 view/
