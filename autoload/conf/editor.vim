@@ -59,12 +59,15 @@ function conf#editor#defaults()
     set undolevels=1000   " maximum number of changes that can be undone
     set undoreload=10000  " maximum number lines to save for undo on a buffer reload
   endif
+
+  " disable preview window
+  set completeopt-=preview
 endfunction
 
 " Setup color scheme
 function conf#editor#colorscheme()
   set t_Co=256
-  set term=xterm-256color
+  "set term=xterm-256color
   set background=dark
   colorscheme gruvbox
 endfunction
