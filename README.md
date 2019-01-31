@@ -1,5 +1,8 @@
 # Personal Vim Setup
 
+Deoplete appears to work better with `nvim` than with `vim8` so there's errors
+when using this repo with the `vim8`.
+
 ## Setup
 
 ```sh
@@ -12,14 +15,7 @@ cd ~/.vim
 mkdir -p ~/.vim/bundle
 ```
 
-After that open `vim` and execute `:PlugInstall`.
-
-### YouCompleteMe
-
-```sh
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer --go-completer --rust-completer --js-completer
-```
+After that open `nvim` and execute `:PlugInstall`.
 
 ### Grip
 
