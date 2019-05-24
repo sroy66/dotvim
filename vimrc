@@ -7,48 +7,29 @@ Plug 'aklt/plantuml-syntax'
 Plug 'alvan/vim-closetag'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'cespare/vim-toml'
-Plug 'chikamichi/mediawiki.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'davidhalter/parso'
-Plug 'digitaltoad/vim-jade'
-Plug 'digitaltoad/vim-pug'
 Plug 'editorconfig/editorconfig-plugin-tests'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'epilande/vim-react-snippets'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'geoffjay/vim-dcs-snippets'
 Plug 'honza/vim-snippets'
 Plug 'IN3D/vim-raml'
-Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'jparise/vim-graphql'
-Plug 'jpo/vim-railscasts-theme'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'jwhitley/vim-colors-solarized'
 Plug 'kana/vim-metarw'
-Plug 'kingbin/vim-arduino'
 Plug 'majutsushi/tagbar'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'mattn/vim-metarw-etcd'
-Plug 'mattn/webapi-vim'
 Plug 'mgutz/vim-colors'
 Plug 'morhetz/gruvbox'
-Plug 'mxw/vim-jsx'
-Plug 'nikvdp/ejs-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'peterhoeg/vim-qml'
-Plug 'posva/vim-vue'
-Plug 'PratikBhusal/vim-grip'
-Plug 'previm/previm'
-Plug 'rodjek/vim-puppet'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'rust-lang/rust.vim'
 Plug 'sbl/scvim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -57,21 +38,18 @@ Plug 'SirVer/ultisnips'
 Plug 'sjl/gundo.vim'
 Plug 'stfl/meson.vim'
 Plug 'tomtom/tlib_vim'
-Plug 'toritori0318/vim-redmine'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-markdown'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-latex/vim-latex'
 Plug 'vim-scripts/dbext.vim'
 Plug 'vim-scripts/gtk-vim-syntax'
 Plug 'vim-scripts/taglist.vim'
-Plug 'vim-scripts/vim-mediawiki-editor'
 Plug 'vim-syntastic/syntastic'
-Plug 'wakatime/vim-wakatime'
 Plug 'wavded/vim-stylus'
+Plug 'geoffjay/vim-apex-snippets'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -109,12 +87,8 @@ call conf#ctrlp#init()
 call conf#closetag#init()
 call conf#nerdtree#init()
 call conf#jedi#init()
-call conf#redmine#init()
-call conf#rust#init()
 call conf#lsp#init()
 call conf#supercollider#init()
-call conf#previm#init()
-call conf#taskwarrior#init()
 call conf#powerline#init()
 
 " Filetype configuration
@@ -142,8 +116,6 @@ map <silent> ,V :source ~/.vim/vimrc<CR>:exe ":echo 'vimrc reloaded'"<CR>
 "map <F4> :TlistToggle<CR>
 nmap <F4> :TagbarToggle<CR>
 map <F5> :NERDTree<CR>
-" map <F6> :call conf#util#MpdPause()<CR>
-" map <F7> :call conf#util#MpdPlay()<CR>
 map <F7> :call conf#util#DiffGetLocal()<CR>
 " map <F8> :call conf#util#SaveCurrent()<CR>
 " map <F9> :call conf#util#QuitAll()<CR>
@@ -172,8 +144,6 @@ nnoremap <leader>ff :%!js-beautify -j -q -B -f -<CR>
 
 """
 " Ideas adapted from some genius at static.github.io/vim.html
-:nmap \a Geoff Johnson, <geoff.jay@gmail.com><CR>
-:nmap \c :CoVim start 14041 gjohn<CR>
 :nmap \d <C-R>=strftime('%Y-%m-%d')<CR>
 :nmap \e :NERDTree<CR>
 :nmap \r :NERDTreeRefreshRoot<CR>
