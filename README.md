@@ -10,7 +10,7 @@ when using this repo with the `vim8`.
 ```
 
 ```sh
-git clone http://github.com/geoffjay/dotvim.git ~/.vim
+git clone git@github.com:sroy66/dotvim.git ~/.vim
 cd ~/.vim
 mkdir -p ~/.vim/bundle
 ```
