@@ -13,6 +13,7 @@ when using this repo with the `vim8`.
 git clone git@github.com:sroy66/dotvim.git ~/.vim
 cd ~/.vim
 mkdir -p ~/.vim/bundle
+ln -s /home/user/.vim /home/user/.config/nvim
 ```
 
 After that open `nvim` and execute `:PlugInstall`.
